@@ -1,3 +1,7 @@
+//1.1Faute not include list.h
+
+ #include "List.h"
+
 
 namespace pr {
 
@@ -9,15 +13,19 @@ size_t Chainon::length() {
 	if (next != nullptr) {
 		len += next->length();
 	}
-	return length();
+	//2.1faute: len pas length()
+	return len;
 }
-
-void Chainon::print (std::ostream & os) {
+//1.2faute pas de meme parametres const
+void Chainon::print (std::ostream & os) const{
 	os << data ;
 	if (next != nullptr) {
 		os << ", ";
+		//faute:acces nullptr
+
+		next->print(os);
 	}
-	next->print(os);
+
 }
 
 // ******************  List
@@ -41,11 +49,12 @@ void List::push_back (const std::string& val) {
 	}
 }
 
-void List::push_front (const std::string& val) {
-	tete = new Chainon(val,tete);
+void List::push_front(const std::string& val) {
+    tete = new Chainon(val, tete);
 }
 
-bool empty() {
+//1.3fuate
+bool List::empty() {
 	return tete == nullptr;
 }
 
@@ -57,7 +66,7 @@ size_t List::size() const {
 	}
 }
 
-} // namespace pr
+
 
 std::ostream & operator<< (std::ostream & os, const pr::List & vec)
 {
@@ -68,4 +77,4 @@ std::ostream & operator<< (std::ostream & os, const pr::List & vec)
 	os << "]";
 	return os;
 }
-
+} // namespace pr

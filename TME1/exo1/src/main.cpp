@@ -10,7 +10,10 @@ int main () {
 	str[0] = 'a';
 	str[1] = 'b';
 	str[2] = 'c';
-	size_t i = 0;
+	//Faute manque fini
+	str[3] = '\0';
+	//faute size_t toujour>=0
+	int i = 0;
 
 	if (! strcmp (str, abc.c_str())) {
 		std::cout << "Equal !";
@@ -28,10 +31,12 @@ int main () {
 		std::cout << "elt " << i << ": " << list[i] << std::endl;
 	}
 
+	/*
 	// liberer les char de la chaine
 	for (char *cp = str ; *cp ; cp++) {
 		delete cp;
 	}
+	*/
 	// et la chaine elle meme
 	delete str;
 

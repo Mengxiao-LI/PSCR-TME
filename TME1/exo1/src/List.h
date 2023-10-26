@@ -34,11 +34,8 @@ public:
 	const std::string & operator[] (size_t index) const ;
 
 	void push_back (const std::string& val) ;
-
-	void push_front (const std::string& val) {
-		tete = new Chainon(val,tete);
-	}
-
+	// FAUTE : corps dans le cpp
+	void push_front (const std::string& val);
 	bool empty() ;
 
 	size_t size() const ;
